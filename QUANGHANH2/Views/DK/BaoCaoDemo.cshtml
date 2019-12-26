@@ -1,0 +1,352 @@
+﻿
+@{
+    ViewBag.Title = "MonthlyQuarterlyReport";
+    Layout = null;
+
+}
+<link href="~/assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
+<link href="~/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css" rel="stylesheet">
+<link href="~/dist/css/style.css" rel="stylesheet">
+<link href="~/css/preloader/css.css" rel="stylesheet" />
+<!-- This page CSS -->
+<link href="~/assets/Custom css/TABLE_BORDERED.css" rel="stylesheet" />
+<link href="~/assets/Custom css/floating-action-btn.css" rel="stylesheet">
+<link href="~/assets/Custom css/form-input-border.css" rel="stylesheet">
+<!--Custom Datepicker CSS-->
+<link href="~/lib/datepicker_src/dist/css/datepicker.min.css" rel="stylesheet" type="text/css">
+<link href="~/lib/datepicker_src/dist/css/custom.css " rel="stylesheet " type="text/css ">
+<link href="~/lib/datepicker_src/dist/css/font.css" rel="stylesheet" type="text/css">
+<link href="~/css/preloader/css.css" rel="stylesheet" />
+<!--Font css-->
+<link href="~/assets/Custom css/font-family.css" rel="stylesheet" />
+<!-- ============================================================== -->
+<!-- All Required js -->
+<!-- ============================================================== -->
+<script src="~/assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="~/dist/js/materialize.min.js"></script>
+<script src="~/assets/libs/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js"></script>
+<!-- ============================================================== -->
+<!-- Apps -->
+<!-- ============================================================== -->
+<script src="~/dist/js/app.js"></script>
+<script src="~/dist/js/app.init.js"></script>
+<script src="~/dist/js/app-style-switcher.js"></script>
+<!-- ============================================================== -->
+<!-- Custom js -->
+<!-- ============================================================== -->
+<script src="~/dist/js/custom.min.js"></script>
+<!-- ============================================================== -->
+<!-- This page plugin js -->
+<style>
+    body {
+        background-color: #ffff
+    }
+
+    th, td {
+        border: 1px solid;
+    }
+
+    .table-bordered th {
+        vertical-align: middle !important;
+        text-align: center !important;
+        background-color: #f8f8f8 !important;
+        padding: 5px;
+    }
+
+    table {
+        background-color: white;
+    }
+
+    img {
+        width: 80px;
+    }
+
+    #line1 {
+        font-size: 20px;
+    }
+
+    #line2 {
+        font-size: 25px;
+    }
+
+    .title-name {
+        font-weight: 600;
+        font-family: 'Times New Roman', Times, serif;
+    }
+
+    table td {
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    .big-title{
+        font-weight: 600;
+        vertical-align:middle;     
+        margin-top: 35px;
+    }
+
+    th#doanhthu-cell {
+        background-color: #ff9191 !important;
+        font-size: 25px;
+    }
+    .red-title{
+        color:red;
+    }
+    table th *{
+        display:inline;
+    }
+    #header-of-page table td{
+        border: 1px solid #ffff;
+    }
+</style>
+<div class="row" id="header-of-page">
+    <div class="col l4 m4 s12">
+        <table>
+            <tr>
+                <td rowspan="2" id="tkv-logo">
+                    <img src="~/assets/images/logo-tkv.png" />
+                </td>
+                <td id="line1" class="title-name">TẬP ĐOÀN CÔNG NGHIỆP THAN - KHOÁNG SẢN VIỆT NAM</td>
+                <td rowspan="2" id="qh-logo">
+                    <img src="~/assets/images/logo-qh.jpg" />
+                </td>
+            </tr>
+            <tr>
+                <td id="line2" class="title-name">CÔNG TY THAN QUANG HANH - TKV</td>
+            </tr>
+        </table>
+    </div>
+    <div class="col l8 m8 s12 center big-title">
+        @*<table>
+            <tr>
+                <td rowspan="2">*@
+                    <h1><b>BẢNG TỔNG HỢP CÁC CHỈ TIÊU SẢN XUẤT THÁNG <span id='month'>9</span> NĂM <span id='year'>2019</span></b></h1>
+                @*</td>
+            </tr>
+        </table>*@
+    </div>
+</div>
+<table class="table striped table-responsive table-bordered" id="mainTable">
+    <thead>
+        <tr>
+            <th rowspan="4">KH</th>
+            <th colspan="4">PX Đào Lò 1</th>
+            <th colspan="4">PX Đào Lò 3</th>
+            <th colspan="4">PX Đào Lò 4</th>
+            <th colspan="4">PX Đào Lò 5</th>
+            <th colspan="4">PX Đào Lò 7</th>
+            <th colspan="4">PX Đào Lò 8</th>
+            <th colspan="2">PX Khai Thác 1</th>
+            <th colspan="2">PX Khai Thác 2</th>
+            <th colspan="2">PX Khai Thác 3</th>
+            <th colspan="2">PX Khai Thác 4</th>
+            <th colspan="2">PX Khai Thác 5</th>
+            <th colspan="2">PX Khai Thác 6</th>
+            <th colspan="2">PX Khai Thác 7</th>
+            <th colspan="2">PX Khai Thác 8</th>
+            <th colspan="2">PX Khai Thác 9</th>
+            <th colspan="2">PX Khai Thác 10</th>
+            <th colspan="2">PX Khai Thác 11</th>
+            <th colspan="2">Doanh Thu</th>
+            <th colspan="12">Kế hoạch các chỉ tiêu chủ yếu</th>
+        </tr>
+        <tr>
+            <th colspan="4"> <div class="red-title"><div class="red-title">Than SX:</div></div> 2300</th>
+            <th colspan="4"> <div class="red-title">Than SX:</div> 3500</th>
+            <th colspan="4"> <div class="red-title">Than SX:</div> 2500</th>
+            <th colspan="4"> <div class="red-title">Than SX:</div> 2700</th>
+            <th colspan="4"> <div class="red-title">Than SX:</div> 1000</th>
+            <th colspan="4"> <div class="red-title">Than SX:</div> 2500</th>
+            <th colspan="2"> <div class="red-title">Than SX:</div> 16000</th>
+            <th colspan="2"> <div class="red-title">Than SX:</div> 19000</th>
+            <th colspan="2"> <div class="red-title">Than SX:</div> 12000</th>
+            <th colspan="2"> <div class="red-title">Than SX:</div> 14000</th>
+            <th colspan="2"> <div class="red-title">Than SX:</div> 17000</th>
+            <th colspan="2"> <div class="red-title">Than SX:</div> 10000</th>
+            <th colspan="2"> <div class="red-title">Than SX:</div> 10000</th>
+            <th colspan="2"> <div class="red-title">Than SX:</div> 10000</th>
+            <th colspan="2"> <div class="red-title">Than SX:</div> 5000</th>
+            <th colspan="2"> <div class="red-title">Than SX:</div> 3500</th>
+            <th colspan="2"> <div class="red-title">Than SX:</div> 13000</th>
+            <th rowspan="3" colspan="2" id="doanhthu-cell"> 245 tỷ</th>
+            <th colspan="4"><div class="red-title">Than Sản Xuất:</div> 175000</th>
+            <th colspan="4"><div class="red-title">Mét Lò:</div> 1860</th>
+            <th colspan="4"><div class="red-title">Mét lò XDCB tự làm:</div>0</th>
+        </tr>
+        <tr>
+            <th colspan="4"> <div class="red-title">Mét Lò:</div> 230</th>
+            <th colspan="4"> <div class="red-title">Mét Lò:</div> 350</th>
+            <th colspan="4"> <div class="red-title">Mét Lò:</div> 250</th>
+            <th colspan="4"> <div class="red-title">Mét Lò:</div> 270</th>
+            <th colspan="4"> <div class="red-title">Mét Lò:</div> 100</th>
+            <th colspan="4"> <div class="red-title">Mét Lò:</div> 250</th>
+            <th colspan="2"> <div class="red-title">Mét Lò:</div> 160</th>
+            <th colspan="2"> <div class="red-title">Mét Lò:</div> 100</th>
+            <th colspan="2"> <div class="red-title">Mét Lò:</div> 100</th>
+            <th colspan="2"> <div class="red-title">Mét Lò:</div> 140</th>
+            <th colspan="2"> <div class="red-title">Mét Lò:</div> 170</th>
+            <th colspan="2"> <div class="red-title">Mét Lò:</div> 100</th>
+            <th colspan="2"> <div class="red-title">Mét Lò:</div> 100</th>
+            <th colspan="2"> <div class="red-title">Mét Lò:</div> 100</th>
+            <th colspan="2"> <div class="red-title">Mét Lò:</div> 500</th>
+            <th colspan="2"> <div class="red-title">Mét Lò:</div> 350</th>
+            <th colspan="2"> <div class="red-title">Mét Lò:</div> 130</th>
+            <th colspan="4"><div class="red-title">Than Hầm Lò: </div>1750</th>
+            <th colspan="4"><div class="red-title">Mét Lò XDCB:</div> 0 </th>
+            <th colspan="4"><div class="red-title">Mét lò XDCB thuê ngoài:</div> 0</th>
+        </tr>
+        <tr>
+            <th colspan="4"> <div class="red-title">XDCB:</div> 230</th>
+            <th colspan="4"> <div class="red-title">XDCB:</div> 350</th>
+            <th colspan="4"> <div class="red-title">XDCB:</div> 250</th>
+            <th colspan="4"> <div class="red-title">XDCB:</div> 270</th>
+            <th colspan="4"> <div class="red-title">XDCB:</div> 100</th>
+            <th colspan="4"> <div class="red-title">XDCB:</div> 250</th>
+            <th colspan="2"> <div class="red-title">XDCB:</div> 160</th>
+            <th colspan="2"> <div class="red-title">XDCB:</div> 100</th>
+            <th colspan="2"> <div class="red-title">XDCB:</div> 100</th>
+            <th colspan="2"> <div class="red-title">XDCB:</div> 140</th>
+            <th colspan="2"> <div class="red-title">XDCB:</div> 170</th>
+            <th colspan="2"> <div class="red-title">XDCB:</div> 100</th>
+            <th colspan="2"> <div class="red-title">XDCB:</div> 100</th>
+            <th colspan="2"> <div class="red-title">XDCB:</div> 100</th>
+            <th colspan="2"> <div class="red-title">XDCB:</div> 500</th>
+            <th colspan="2"> <div class="red-title">XDCB:</div> 350</th>
+            <th colspan="2"> <div class="red-title">XDCB:</div> 130</th>
+            <th colspan="4"><div class="red-title">Than Lộ Thiên:</div> 1750</th>
+            <th colspan="4"><div class="red-title">Mét Lò CBSX:</div> 0</th>
+            <th colspan="4"><div class="red-title">Than Tiêu Thụ:</div> 0</th>
+        </tr>
+        <tr>
+            <th rowspan="2"> Thực Hiện Ngày</th>
+            <th colspan="2"> Than SX</th>
+            <th colspan="2"> Mét Lò</th>
+            <th colspan="2"> Than SX</th>
+            <th colspan="2"> Mét Lò</th>
+            <th colspan="2"> Than SX</th>
+            <th colspan="2"> Mét Lò</th>
+            <th colspan="2"> Than SX</th>
+            <th colspan="2"> Mét Lò</th>
+            <th colspan="2"> Than SX</th>
+            <th colspan="2"> Mét Lò</th>
+            <th colspan="2"> Than SX</th>
+            <th colspan="2"> Mét Lò</th>
+            <th colspan="2"> Than SX</th>
+            <th colspan="2"> Than SX</th>
+            <th colspan="2"> Than SX</th>
+            <th colspan="2"> Than SX</th>
+            <th colspan="2"> Than SX</th>
+            <th colspan="2"> Than SX</th>
+            <th colspan="2"> Than SX</th>
+            <th colspan="2"> Than SX</th>
+            <th colspan="2"> Than SX</th>
+            <th colspan="2"> Than SX</th>
+            <th colspan="2"> Than SX</th>
+            <th colspan="2"> Thực Hiện</th>
+            <th colspan="2"> Than Sản Xuất</th>
+            <th colspan="2"> Than Hầm Lò</th>
+            <th colspan="2"> Than Lộ Thiên</th>
+            <th colspan="2"> Mét Lò</th>
+            <th colspan="2"> Dương Huy</th>
+            <th colspan="2"> Than Tiêu Thụ</th>
+        </tr>
+        <tr>
+            <th>Ngày</th>
+            <th>Luỹ Kế</th>
+            <th>Ngày</th>
+            <th>Luỹ Kế</th>
+            <th>Ngày</th>
+            <th>Luỹ Kế</th>
+            <th>Ngày</th>
+            <th>Luỹ Kế</th>
+            <th>Ngày</th>
+            <th>Luỹ Kế</th>
+            <th>Ngày</th>
+            <th>Luỹ Kế</th>
+            <th>Ngày</th>
+            <th>Luỹ Kế</th>
+            <th>Ngày</th>
+            <th>Luỹ Kế</th>
+            <th>Ngày</th>
+            <th>Luỹ Kế</th>
+            <th>Ngày</th>
+            <th>Luỹ Kế</th>
+            <th>Ngày</th>
+            <th>Luỹ Kế</th>
+            <th>Ngày</th>
+            <th>Luỹ Kế</th>
+            <th>Ngày</th>
+            <th>Luỹ Kế</th>
+            <th>Ngày</th>
+            <th>Luỹ Kế</th>
+            <th>Ngày</th>
+            <th>Luỹ Kế</th>
+            <th>Ngày</th>
+            <th>Luỹ Kế</th>
+            <th>Ngày</th>
+            <th>Luỹ Kế</th>
+            <th>Ngày</th>
+            <th>Luỹ Kế</th>
+            <th>Ngày</th>
+            <th>Luỹ Kế</th>
+            <th>Ngày</th>
+            <th>Luỹ Kế</th>
+            <th>Ngày</th>
+            <th>Luỹ Kế</th>
+            <th>Ngày</th>
+            <th>Luỹ Kế</th>
+            <th>Ngày</th>
+            <th>Luỹ Kế</th>
+            <th>Ngày</th>
+            <th>Luỹ Kế</th>
+            <th>Ngày</th>
+            <th>Luỹ Kế</th>
+            <th>Ngày</th>
+            <th>Luỹ Kế</th>
+            <th>Ngày</th>
+            <th>Luỹ Kế</th>
+            <th>Ngày</th>
+            <th>Luỹ Kế</th>
+            <th>Ngày</th>
+            <th>Luỹ Kế</th>
+            <th>Ngày</th>
+            <th>Luỹ Kế</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+<script>
+    function dateFormat2(d) {
+            var dateString = d.substr(6);
+            var currentTime = new Date(parseInt(dateString));
+            var month = currentTime.getMonth() + 1;
+            var day = currentTime.getDate();
+            var year = currentTime.getFullYear();
+            var date = day + "/" + month + "/" + year;
+            return (date);
+    }
+    $(document).ready(() => {
+        $.ajax({
+            'url' : '/phong-dieu-khien/bao-cao-ngay-trong-thang/lay-du-lieu',
+            'type' : 'post',
+            'data' : {
+                'month' : $("#month").html(),
+                'year' : $('#year').html()
+            },
+            'success' : function(response) {
+                // format date
+                tableBody = ''
+                response["listTH"].map(elem => {
+                    elem["date"] = dateFormat2(elem["date"])
+                    tableBody+="<tr>"
+                    Object.keys(elem).forEach((key,index)=> {
+                        tableBody+= "<td>"+elem[key]+"</td>"
+                    })
+                    tableBody+="</tr>"
+                })
+                $("#mainTable tbody").html(tableBody)
+            }
+        })
+    })
+</script>
