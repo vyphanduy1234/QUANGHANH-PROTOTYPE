@@ -299,7 +299,7 @@
                     "columns": [
                         { "data": "SoHieu", "name": "SoHieu" },
                         { "data": "MaNV", "name": "MaNV" },
-                        { "data": "TenNV", "name": "TenNV" },
+                        { "data": "TenNV", "name": "TenNV","render": (data, type, row, meta) => { return "<a class='font-weight-bold text-success' href='@Url.Action("chung-chi-cua-nhan-vien", "phong-tcld")?MaNV=" + row['MaNV'] + "'>" + data + "</a>" } },
                         { "data": "TenChungChi", "name": "TenChungChi" },
                         {
                             "data": "NgayCap", "name": "NgayCap", "render": function (data) {

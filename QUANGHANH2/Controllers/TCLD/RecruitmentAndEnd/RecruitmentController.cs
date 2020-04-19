@@ -320,7 +320,7 @@ namespace QUANGHANH2.Controllers.TCLD
             {
                 congViec = db.CongViecs.Where(x => (x.TenCongViec.ToLower().Trim().Equals(working.ToLower().Trim()) && x.MaThangLuong == thangLuong.MaThangLuong)).FirstOrDefault<CongViec>();
             }
-            if(working != null)
+            if(congViec != null)
             {
                 return congViec.MaCongViec;
             }
