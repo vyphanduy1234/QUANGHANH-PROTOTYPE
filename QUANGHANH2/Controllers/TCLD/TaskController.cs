@@ -125,7 +125,7 @@ namespace QUANGHANH2.Controllers.TCLD
                 {
                     foreach (ChiTiet_NhiemVu_NhanVien nvnv in db.ChiTiet_NhiemVu_NhanVien)
                     {
-                        if (nv.MaNV.Equals(nvnv.MaNV) && nvnv.IsInProcess == true)
+                        if (nv.MaNV.Equals(nvnv.MaNV) && nvnv.IsInProcess == true && Convert.ToBoolean(nvnv.IsUpdated) == false)
                         {
 
                             var mccTemp = (from nvunv in db.ChiTiet_NhiemVu_NhanVien
@@ -288,6 +288,7 @@ namespace QUANGHANH2.Controllers.TCLD
                                                    where nvnhiemvu.MaNV.Equals(nv.MaNV)
                                                    && nvnhiemvu.MaNhiemVu.Equals(nvu.MaNhiemVu)
                                                    && nvnhiemvu.IsInProcess == true
+                                                   && nvnhiemvu.IsUpdated == false
                                                    select new { nvnhiemvu.MaNV }
                                   ).FirstOrDefault();
                         if (isNvienDoingThisJob != null)
